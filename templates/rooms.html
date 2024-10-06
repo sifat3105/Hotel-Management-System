@@ -4,11 +4,13 @@
 {% block title %}Rooms{% endblock title %}
 
 {% block content %}
+
+
   <!-- Booking Start -->
 <div class="container-fluid booking pb-5 wow fadeIn" data-wow-delay="0.1s">
     <div class="container">
         <div class="bg-white shadow" style="padding: 35px;">
-            <form action="{% url 'available_rooms' %}" method="POST">
+            <form action="{% url 'rooms' %}" method="POST">
                 {% csrf_token %}
             <div class="row g-2">
                 <div class="col-md-10">
@@ -100,7 +102,7 @@
                         <p class="text-body mb-3">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.</p>
                         <div class="d-flex justify-content-between">
                             <a class="btn btn-sm btn-primary rounded py-2 px-4" href="">View Detail</a>
-                            <a class="btn btn-sm btn-dark rounded py-2 px-4" href="">Book Now</a>
+                            <a class="btn btn-sm btn-dark rounded py-2 px-4" href="{% url 'selected_room_booking' room.id %}">Book Now</a>
                         </div>
                     </div>
                 </div>

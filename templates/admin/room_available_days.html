@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Available Days</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            {% comment %} align-items: center; {% endcomment %}
+            height: 100vh; /* Center vertically */
+            margin: 0; /* Remove default margin */
+        }
+        table {
+            border-collapse: collapse;
+            width: 60%; /* Set width of the table */
+            max-width: 600px; /* Maximum width for the table */
+            margin: auto; /* Center the table horizontally */
+            text-align: center; /* Center text in table cells */
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+        }
+        th {
+            background-color: #f0f0f0; /* Background color for header */
+        }
+        .available {
+            background-color: #c8e6c9; /* Light green for available days */
+        }
+        .booked {
+            background-color: #ffcdd2; /* Light red for booked days */
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h2 style="text-align: center;">Available Days for Room {{ room.room_number }}</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for date in dates %}
+                    <tr class="{% if date.available %}available{% else %}booked{% endif %}">
+                        <td>{{ date.date }}</td>
+                        <td>
+                            {% if date.available %}
+                                Available
+                            {% else %}
+                                Booked
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+
